@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.miciclo.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.miciclo.app'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    // Clave fija para que cada compilación pueda actualizar la app sin perder los datos.
+    signingConfigs {
+        personal {
+            storeFile file('miciclo.jks')
+            storePassword 'miciclo-personal'
+            keyAlias 'miciclo'
+            keyPassword 'miciclo-personal'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.personal
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
