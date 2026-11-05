@@ -5,84 +5,141 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Mi Ciclo</title>
 <style>
-:root{--bg:#fbf5f0;--card:#fffdfb;--ink:#2e1f26;--soft:#75626b;--line:#e8dcd5;--period:#b8324f;--period-soft:#f6d9de;--fertile:#2f7f78;--fertile-soft:#d5ece8;--pred:#d0758a;--accent:#7a2440;--on:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#1b1317;--card:#271c21;--ink:#f6ebee;--soft:#b9a6ae;--line:#3e2f35;--period:#ec6a85;--period-soft:#552532;--fertile:#6fc9bf;--fertile-soft:#1e4441;--pred:#d98a9c;--accent:#f0a0b2;--on:#2a1017}}
+:root{--bg:#f6f3fb;--surface:#fff;--sunk:#ebe6f3;--ink:#261733;--soft:#6b5d79;--line:#e0d9ea;--men:#c4254f;--fol:#5a5fcf;--fer:#0b8585;--lut:#b87503;--men-t:#f9dfe5;--fer-t:#d3eeee;--brand:#4b2a6b;--on:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#160f20;--surface:#221831;--sunk:#2e2340;--ink:#f3edf9;--soft:#b3a6c2;--line:#392c4d;--men:#f0638a;--fol:#9a9dfa;--fer:#4fcdc8;--lut:#eeb04a;--men-t:#54203a;--fer-t:#123f46;--brand:#c9a9ec;--on:#1d1029}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,Roboto,sans-serif}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 'Google Sans',Roboto,system-ui,sans-serif}
 button,input,textarea{font:inherit;color:inherit}
-button{cursor:pointer;border:0;background:none}
-h1,h2,h3{font-family:Georgia,'Noto Serif',serif;font-weight:500;margin:0}
-main{max-width:520px;margin:auto;padding:20px 16px 96px}
-.top{font-size:26px;margin-bottom:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
-.hero{text-align:center;padding:26px 16px}
-.hero .kicker{color:var(--soft);font-size:14px}
-.hero .big{font:500 44px/1.15 Georgia,'Noto Serif',serif;margin:6px 0}
-.hero .sub{color:var(--soft)}
-.track{display:flex;gap:2px;margin:20px 0 6px;height:10px}
-.track i{flex:1;border-radius:3px;background:var(--line)}
-.track i.p{background:var(--period)}.track i.f{background:var(--fertile)}
-.track i.now{outline:2px solid var(--ink);outline-offset:1px}
-.btn{display:block;width:100%;padding:13px;border-radius:13px;background:var(--accent);color:var(--on);font-weight:600;margin-top:10px}
-.btn.alt{background:none;border:1px solid var(--line);color:var(--ink)}
-.btn.danger{background:none;border:1px solid var(--period);color:var(--period)}
-.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line)}
-.row:first-of-type{border-top:0}.row span:first-child{color:var(--soft)}.row b{font-weight:600;text-align:right}
-.note{font-size:13px;color:var(--soft);margin:12px 4px}
-.warn{border-color:var(--pred);font-size:14px}
-.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.cal-h h2{font-size:21px;text-transform:capitalize}
-.nav{width:44px;height:44px;font-size:22px;border-radius:50%;border:1px solid var(--line)}
-.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+button{cursor:pointer;border:0;background:none;padding:0}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+h1,h2,h3,p{margin:0}
+main{max-width:520px;margin:auto;padding:22px 20px 104px}
+.title{font-size:28px;font-weight:500;letter-spacing:-.01em;margin-bottom:18px}
+.sec{font-size:18px;font-weight:500;margin:28px 0 10px}
+.group{background:var(--surface);border-radius:20px;padding:4px 16px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:54px;padding:10px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}.row>span:first-child{color:var(--soft)}.row b{font-weight:500;text-align:right}
+.note{font-size:13px;color:var(--soft);margin:14px 2px}
+.btn{display:block;width:100%;min-height:52px;border-radius:16px;background:var(--brand);color:var(--on);font-weight:500;margin-top:10px}
+.btn:active{transform:scale(.985)}
+.btn.alt{background:var(--sunk);color:var(--ink)}
+.btn.danger{background:none;color:var(--men);border:1.5px solid var(--men)}
+.hero{text-align:center;padding-top:2px}
+.date{color:var(--soft);font-size:15px}
+.ringbox{position:relative;width:min(78vw,290px);margin:12px auto 6px}
+.ringbox svg{display:block;width:100%;height:auto}
+.seg{animation:none}
+.intro .seg{animation:seg .45s ease both;animation-delay:calc(var(--i)*18ms)}
+@keyframes seg{from{opacity:0}}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.center .num{font-size:82px;line-height:1;font-weight:300;letter-spacing:-.03em}
+.center .cap{font-size:14px;color:var(--soft);margin-top:4px}
+.head{font-size:24px;font-weight:500;letter-spacing:-.01em;margin-top:8px}
+.sub{color:var(--soft);margin-top:2px}
+.phase{display:flex;gap:12px;background:var(--surface);border-radius:20px;padding:15px 16px;margin-top:18px}
+.phase i{flex:none;width:5px;border-radius:3px;background:var(--c)}
+.phase h3{font-size:16px;font-weight:500;color:var(--c)}
+.phase p{font-size:14px;color:var(--soft);margin-top:2px}
+.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-h h2{font-size:24px;font-weight:500;letter-spacing:-.01em}
+.nav{width:44px;height:44px;border-radius:50%;background:var(--surface);display:grid;place-items:center}
+.nav svg{width:20px;height:20px}
+.jump{display:block;margin:0 auto 10px;color:var(--brand);font-size:14px;font-weight:500;min-height:32px}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);row-gap:5px}
 .dow{text-align:center;font-size:12px;color:var(--soft);padding:4px 0}
-.d{aspect-ratio:1;border-radius:50%;position:relative;font-size:15px;min-width:0}
-.d.out{visibility:hidden}.d.period{background:var(--period);color:var(--on);font-weight:600}
-.d.pred{border:2px dashed var(--pred)}.d.fert{background:var(--fertile-soft)}
-.d.ovu{background:var(--fertile);color:var(--on);font-weight:600}
-.d.today{box-shadow:0 0 0 2px var(--ink)}
-.d.log::after{content:"";position:absolute;bottom:12%;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:currentColor}
-.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--soft);margin-top:14px}
-.legend i{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:6px;vertical-align:-2px}
-.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
-.tabs button{flex:1;padding:16px 4px;color:var(--soft);font-size:14px}
-.tabs button.on{color:var(--accent);font-weight:700}
-.scrim{position:fixed;inset:0;background:#0007;display:flex;align-items:flex-end;justify-content:center;z-index:5}
-.sheet{background:var(--bg);width:100%;max-width:520px;max-height:90vh;overflow:auto;border-radius:22px 22px 0 0;padding:20px 16px}
-.sheet h3{font-size:22px;margin-bottom:4px}
-.label{font-weight:600;margin:16px 0 8px;font-size:14px}
+.d{aspect-ratio:1;position:relative;font-size:15px;min-width:0;display:grid;place-items:center}
+.d.out{visibility:hidden}
+.d span{width:88%;height:88%;border-radius:50%;display:grid;place-items:center}
+.d.period span{background:var(--men);color:var(--on);font-weight:500}
+.d.pred span{border:2px dashed var(--men)}
+.d.fert span{background:var(--fer-t)}
+.d.ovu span{background:var(--fer);color:var(--on);font-weight:500}
+.d.today span{box-shadow:0 0 0 2px var(--ink)}
+.d.log::after{content:"";position:absolute;bottom:0;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--soft)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--soft);margin-top:16px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--surface);padding-bottom:env(safe-area-inset-bottom);z-index:3}
+.tabs button{flex:1;padding:9px 2px 8px;color:var(--soft);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:3px}
+.tabs svg{width:24px;height:24px;padding:0;box-sizing:content-box;padding:3px 16px;border-radius:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabs button.on{color:var(--ink);font-weight:500}.tabs button.on svg{background:var(--sunk)}
+.scrim{position:fixed;inset:0;background:#0d061680;display:flex;align-items:flex-end;justify-content:center;z-index:5;animation:fade .2s}
+.sheet{background:var(--bg);width:100%;max-width:520px;max-height:90vh;overflow:auto;border-radius:26px 26px 0 0;padding:10px 20px calc(20px + env(safe-area-inset-bottom));animation:up .24s cubic-bezier(.2,.8,.2,1)}
+.noanim,.noanim .sheet{animation:none}
+.grab{width:36px;height:4px;background:var(--line);border-radius:2px;margin:0 auto 14px}
+@keyframes up{from{transform:translateY(40px)}}@keyframes fade{from{opacity:0}}
+.sheet h3{font-size:22px;font-weight:500}
+.label{font-weight:500;margin:18px 0 8px;font-size:14px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:9px 13px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-size:14px}
-.chip.on{background:var(--accent);border-color:var(--accent);color:var(--on)}
-input,textarea{width:100%;padding:11px;border-radius:11px;border:1px solid var(--line);background:var(--card)}
-textarea{min-height:76px;resize:vertical}
-.bar{height:8px;border-radius:4px;background:var(--fertile);margin-top:4px}
-.hist{padding:9px 0;border-top:1px solid var(--line);font-size:14px}.hist:first-of-type{border-top:0}
-.hist div:first-child{display:flex;justify-content:space-between}
-.hist span{color:var(--soft)}
-.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 15px;border-radius:10px;font-size:14px;z-index:9;white-space:nowrap}
+.chip{min-height:40px;padding:0 14px;border-radius:12px;background:var(--surface);font-size:14px}
+.chip.on{background:var(--brand);color:var(--on)}
+.chip.flow.on{background:var(--men)}
+input,textarea{width:100%;padding:13px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface)}
+textarea{min-height:80px;resize:vertical}
+.chart{display:flex;align-items:flex-end;gap:8px;height:150px;position:relative;margin-top:10px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:12px;color:var(--soft);min-width:0}
+.col i{display:block;width:100%;max-width:30px;background:var(--fol);border-radius:7px 7px 2px 2px;margin:3px 0}
+.col b{font-weight:500;color:var(--ink)}
+.chartbox{background:var(--surface);border-radius:20px;padding:14px 16px}
+.bar{height:7px;border-radius:4px;background:var(--sunk);margin-top:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--brand);border-radius:4px}
+.sym{padding:9px 0;font-size:14px}.sym div:first-child{display:flex;justify-content:space-between}.sym span{color:var(--soft)}
+.switch{width:50px;height:30px;border-radius:15px;background:var(--line);position:relative;flex:none;transition:background .15s}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .15s}
+.switch[aria-checked=true]{background:var(--brand)}.switch[aria-checked=true]::after{left:23px}
+.link{display:flex;width:100%;justify-content:space-between;align-items:center;gap:14px;min-height:54px;padding:10px 0;border-top:1px solid var(--line);text-align:left}
+.link:first-child{border-top:0}.link small{color:var(--soft);font-size:13px;display:block}
+.toast{position:fixed;left:50%;bottom:94px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 15px;border-radius:12px;font-size:14px;z-index:9;max-width:90%;text-align:center}
+.step{min-height:calc(100vh - 44px);display:flex;flex-direction:column}
+.step h1{font-size:30px;line-height:1.2;font-weight:500;letter-spacing:-.015em;margin:34px 0 10px}
+.step .grow{flex:1}.dots{display:flex;gap:6px}.dots i{width:26px;height:4px;border-radius:2px;background:var(--line)}.dots i.on{background:var(--brand)}
+.stepper{display:flex;align-items:center;justify-content:center;gap:24px;margin:34px 0}
+.stepper button{width:56px;height:56px;border-radius:50%;background:var(--sunk);font-size:26px}
+.stepper output{font-size:64px;font-weight:300;min-width:92px;text-align:center}
+.lock{position:fixed;inset:0;background:var(--bg);z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.lock h2{font-size:22px;font-weight:500}.lock p{color:var(--soft);font-size:14px;min-height:21px;margin:4px 0 16px;text-align:center}
+.pdots{display:flex;gap:14px;margin-bottom:28px}.pdots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--soft)}.pdots i.on{background:var(--ink);border-color:var(--ink)}
+.keys{display:grid;grid-template-columns:repeat(3,72px);gap:12px}.keys button{height:72px;border-radius:50%;background:var(--surface);font-size:26px;font-weight:300}
+.forgot{margin-top:22px;color:var(--soft);font-size:14px;min-height:40px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <main id="app"></main>
 <nav class="tabs" id="tabs"></nav>
 <div id="modal"></div>
+<div id="lock"></div>
 <script>
 'use strict';
-var KEY='miciclo.v1',DAY=864e5;
+var KEY='miciclo.v1',DAY=864e5,VERSION='2.0';
 var MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+var WEEK=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 var FLOWS={ligero:'Ligero',medio:'Medio',abundante:'Abundante'};
 var SYMPTOMS=['Cólicos','Dolor de cabeza','Dolor de espalda','Sensibilidad en senos','Hinchazón','Acné','Cansancio','Náuseas','Antojos','Cambios de ánimo','Ansiedad','Insomnio'];
 var MIN_CYCLE=15,MAX_CYCLE=60;
+var PHASES={
+  men:{n:'Menstruación',c:'--men',t:'El revestimiento del útero se desprende. Es común sentir cólicos o cansancio.'},
+  fol:{n:'Fase folicular',c:'--fol',t:'El cuerpo se prepara para ovular. Muchas personas notan más energía en estos días.'},
+  fer:{n:'Días fértiles',c:'--fer',t:'Hay más probabilidad de embarazo. Es una estimación: no la uses como anticonceptivo.'},
+  lut:{n:'Fase lútea',c:'--lut',t:'Después de la ovulación. Puedes notar hinchazón, sensibilidad o cambios de ánimo.'},
+  late:{n:'Periodo retrasado',c:'--men',t:'Un retraso de pocos días es frecuente; el estrés o los cambios de rutina pueden influir.'}
+};
+var ICONS={
+  hoy:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="3.5" r="1.4" fill="currentColor"/></svg>',
+  cal:'<svg viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="15" rx="3"/><path d="M4 10.5h16M8.5 3.5v4M15.5 3.5v4"/></svg>',
+  stats:'<svg viewBox="0 0 24 24"><path d="M5 20v-7M12 20V5M19 20v-10"/></svg>',
+  ajustes:'<svg viewBox="0 0 24 24"><path d="M4 7.5h9M18 7.5h2M4 16.5h2M11 16.5h9"/><circle cx="15.5" cy="7.5" r="2.5"/><circle cx="8.5" cy="16.5" r="2.5"/></svg>'
+};
+var CHEV=function(d){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="'+(d<0?'M15 5l-7 7 7 7':'M9 5l7 7-7 7')+'"/></svg>'};
 
 /* ---- fechas: número de día absoluto para evitar errores de horario de verano ---- */
 function toN(s){var p=s.split('-');return Date.UTC(+p[0],+p[1]-1,+p[2])/DAY}
 function toS(n){return new Date(n*DAY).toISOString().slice(0,10)}
 function todayS(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
 function nice(n){var d=new Date(n*DAY);return d.getUTCDate()+' de '+MONTHS[d.getUTCMonth()]}
+function range(a,b){var x=new Date(a*DAY),y=new Date(b*DAY);return x.getUTCMonth()===y.getUTCMonth()?x.getUTCDate()+' al '+nice(b):nice(a)+' al '+nice(b)}
 function plural(n,w){return n+' '+w+(n===1?'':'s')}
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 
-/* ---- lógica ---- */
+/* ---- lógica del ciclo ---- */
 function periods(logs){
   var days=Object.keys(logs).filter(function(k){return logs[k].flow}).map(toN).sort(function(a,b){return a-b});
   var out=[];
@@ -110,6 +167,16 @@ function analyze(st,today){
   r.next=r.forecast[0];
   return r;
 }
+/* Fase de un día del ciclo actual: lo registrado manda; lo demás es estimación. */
+function dayPhase(i,a,logs,today){
+  var n=a.last.start+i-1,l=logs[toS(n)];
+  if(n<=today&&l&&l.flow)return'men';
+  if(n>today&&i<=a.periodLen&&a.last.end>=today-1)return'men';
+  var o=a.cycleLen-13;
+  if(i>a.cycleLen)return'late';
+  if(i>=o-5&&i<=o+1)return'fer';
+  return i<o-5?'fol':'lut';
+}
 function classify(n,a,logs,today){
   var s=toS(n),l=logs[s],c={};
   if(l&&l.flow)c.period=true;
@@ -120,161 +187,252 @@ function classify(n,a,logs,today){
   });
   return c;
 }
+/* Primer aviso futuro: 9:00 de la mañana, `days` días antes de un periodo previsto. */
+function reminderAt(a,days,now){
+  for(var i=0;i<a.forecast.length;i++){
+    var d=new Date((a.forecast[i].start-days)*DAY),
+        t=new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate(),9).getTime();
+    if(t>now)return t;
+  }
+  return 0;
+}
 
 /* ---- almacenamiento: solo en este teléfono ---- */
 var mem=null;
-function fresh(){return{logs:{},settings:{cycle:28,period:5},onboarded:false}}
+function fresh(){return{logs:{},settings:{cycle:28,period:5,reminder:{on:false,days:2}},onboarded:false}}
 function valid(o){return o&&typeof o==='object'&&o.logs&&typeof o.logs==='object'&&o.settings&&
   +o.settings.cycle>=MIN_CYCLE&&+o.settings.cycle<=MAX_CYCLE&&+o.settings.period>=1&&+o.settings.period<=15&&
   Object.keys(o.logs).every(function(k){return /^\d{4}-\d{2}-\d{2}$/.test(k)&&o.logs[k]&&typeof o.logs[k]==='object'&&
     (!o.logs[k].flow||FLOWS.hasOwnProperty(o.logs[k].flow))&&(!o.logs[k].symptoms||Array.isArray(o.logs[k].symptoms))})}
-function load(){try{var o=JSON.parse(localStorage.getItem(KEY));if(valid(o))return o}catch(e){}return mem||fresh()}
-function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('No se pudo guardar')}}
+function migrate(o){o.settings.reminder=o.settings.reminder||{on:false,days:2};return o}
+function load(){try{var o=JSON.parse(localStorage.getItem(KEY));if(valid(o))return migrate(o)}catch(e){}return mem||fresh()}
+function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('No se pudo guardar. Revisa el espacio de tu teléfono.')}syncReminder()}
+function syncReminder(){
+  if(!window.Android||!Android.setReminder)return;
+  var r=S.settings.reminder,t=toN(todayS());
+  if(!S.onboarded||!r.on)return Android.setReminder(0,'');
+  var a=analyze(S,t);
+  if(!a.last)return Android.setReminder(0,'');
+  Android.setReminder(reminderAt(a,r.days,Date.now()),'Tu periodo podría llegar en '+plural(r.days,'día')+'.');
+}
 
 /* ---- interfaz ---- */
-var S=load(),tab='hoy',view=null,sheetOpen=false;
+var S=load(),tab='hoy',view=null,sheetOpen=false,firstHome=true,ob=null;
 var $=function(id){return document.getElementById(id)};
-function toast(t){var e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);setTimeout(function(){e.remove()},2400)}
+function toast(t){var e=document.createElement('div');e.className='toast';e.setAttribute('role','status');e.textContent=t;document.body.appendChild(e);setTimeout(function(){e.remove()},2600)}
 function setTab(t){tab=t;render();window.scrollTo(0,0)}
 function render(){
   $('tabs').style.display=S.onboarded?'flex':'none';
   if(!S.onboarded)return renderOnboard();
   $('tabs').innerHTML=[['hoy','Hoy'],['cal','Calendario'],['stats','Resumen'],['ajustes','Ajustes']].map(function(t){
-    return '<button class="'+(tab===t[0]?'on':'')+'" onclick="setTab(\''+t[0]+'\')">'+t[1]+'</button>'}).join('');
+    return '<button class="'+(tab===t[0]?'on':'')+'" '+(tab===t[0]?'aria-current="page" ':'')+'onclick="setTab(\''+t[0]+'\')">'+ICONS[t[0]]+t[1]+'</button>'}).join('');
   ({hoy:renderHoy,cal:renderCal,stats:renderStats,ajustes:renderAjustes})[tab]();
 }
+
+/* Inicio guiado: una pregunta por pantalla */
 function renderOnboard(){
-  var t=todayS();
-  $('app').innerHTML='<h1 class="top">Te damos la bienvenida</h1><div class="card">'+
-  '<p style="margin-top:0">Tres datos para empezar. Las predicciones mejoran a medida que registras más ciclos.</p>'+
-  '<div class="label">¿Cuándo empezó tu último periodo?</div><input type="date" id="o1" max="'+t+'" value="'+t+'">'+
-  '<div class="label">¿Cuántos días suele durar tu periodo?</div><input type="number" id="o2" min="1" max="15" value="5" inputmode="numeric">'+
-  '<div class="label">¿Cada cuántos días suele llegar?</div><input type="number" id="o3" min="15" max="60" value="28" inputmode="numeric">'+
-  '<p class="note">Si no lo sabes con certeza, deja 5 y 28: la app se ajustará con tus registros.</p>'+
-  '<button class="btn" onclick="finishOnboard()">Empezar</button></div>'+
-  '<p class="note">Tus datos se guardan solo en este teléfono. La app no tiene permiso para usar internet.</p>';
+  if(!ob)ob={step:0,date:todayS(),period:5,cycle:28};
+  var t=todayS(),dots='<div class="dots" aria-label="Paso '+(ob.step+1)+' de 3">'+[0,1,2].map(function(i){return'<i class="'+(i<=ob.step?'on':'')+'"></i>'}).join('')+'</div>',body;
+  if(ob.step===0)body='<h1>¿Cuándo empezó tu último periodo?</h1><p class="sub">Elige el primer día de sangrado.</p><div style="margin-top:24px"><input type="date" id="o1" aria-label="Fecha de inicio" max="'+t+'" value="'+ob.date+'"></div>';
+  if(ob.step===1)body='<h1>¿Cuántos días suele durar?</h1><p class="sub">Si no lo sabes con certeza, deja 5.</p>'+stepper('period');
+  if(ob.step===2)body='<h1>¿Cada cuántos días suele llegar?</h1><p class="sub">Cuenta desde el inicio de un periodo hasta el siguiente. Si no lo sabes, deja 28.</p>'+stepper('cycle');
+  $('app').innerHTML='<div class="step">'+dots+body+'<div class="grow"></div>'+
+    (ob.step===2?'<p class="note">Tus datos se guardan solo en este teléfono. La app no tiene permiso para usar internet.</p>':'')+
+    '<button class="btn" onclick="obNext()">'+(ob.step===2?'Empezar':'Continuar')+'</button>'+
+    (ob.step?'<button class="btn alt" onclick="ob.step--;render()">Atrás</button>':'')+'</div>';
 }
-function finishOnboard(){
-  var d=$('o1').value,p=+$('o2').value,c=+$('o3').value,t=todayS();
-  if(!d||d>t)return toast('Elige una fecha que no sea futura');
-  if(!(p>=1&&p<=15))return toast('La duración debe ser de 1 a 15 días');
-  if(!(c>=15&&c<=60))return toast('El ciclo debe ser de 15 a 60 días');
-  S.settings={cycle:c,period:p};S.onboarded=true;fillPeriod(d,p);save();render();
+function stepper(k){return '<div class="stepper"><button aria-label="Menos" onclick="obAdj(\''+k+'\',-1)">−</button><output id="ov">'+ob[k]+'</output><button aria-label="Más" onclick="obAdj(\''+k+'\',1)">+</button></div>'}
+function obAdj(k,x){var lim=k==='period'?[1,15]:[MIN_CYCLE,MAX_CYCLE];ob[k]=Math.min(lim[1],Math.max(lim[0],ob[k]+x));$('ov').textContent=ob[k]}
+function obNext(){
+  if(ob.step===0){var d=$('o1').value;if(!d||d>todayS())return toast('Elige una fecha de hoy o anterior.');ob.date=d}
+  if(ob.step<2){ob.step++;return render()}
+  S.settings.cycle=ob.cycle;S.settings.period=ob.period;S.onboarded=true;fillPeriod(ob.date,ob.period);ob=null;save();render();
 }
 function fillPeriod(from,len){
   var n=toN(from),t=toN(todayS());
   for(var i=0;i<len&&n+i<=t;i++){var k=toS(n+i);S.logs[k]=S.logs[k]||{};if(!S.logs[k].flow)S.logs[k].flow='medio'}
 }
+
+/* Hoy */
+function ringSvg(a,t){
+  var R=128,C=150,out='<svg viewBox="0 0 300 300" role="img" aria-label="Día '+(a.last?a.cycleDay:0)+' del ciclo">';
+  if(!a.last)return out+'<circle cx="150" cy="150" r="128" fill="none" stroke="var(--sunk)" stroke-width="16"/></svg>';
+  var L=Math.max(a.cycleLen,a.cycleDay),gap=Math.min(3,60/L),i,mark='';
+  function pt(deg){var r=(deg-90)*Math.PI/180;return (C+R*Math.cos(r)).toFixed(2)+' '+(C+R*Math.sin(r)).toFixed(2)}
+  for(i=1;i<=L;i++){
+    var s=(i-1)*360/L+gap/2,e=i*360/L-gap/2,ph=PHASES[dayPhase(i,a,S.logs,t)];
+    out+='<path class="seg" style="--i:'+i+'" d="M'+pt(s)+'A'+R+' '+R+' 0 0 1 '+pt(e)+'" fill="none" stroke="var('+ph.c+')" stroke-width="16" stroke-linecap="butt" opacity="'+(i<=a.cycleDay?1:.3)+'"/>';
+    if(i===a.cycleDay){var m=pt((s+e)/2).split(' ');mark='<circle cx="'+m[0]+'" cy="'+m[1]+'" r="14" fill="var(--bg)"/><circle cx="'+m[0]+'" cy="'+m[1]+'" r="9" fill="var('+ph.c+')"/>'}
+  }
+  return out+mark+'</svg>';
+}
 function renderHoy(){
-  var t=toN(todayS()),a=analyze(S,t),h='<h1 class="top">Hoy, '+nice(t)+'</h1>';
+  var t=toN(todayS()),d=new Date(t*DAY),a=analyze(S,t),todayLog=S.logs[toS(t)],h='<div class="hero"><p class="date">'+WEEK[d.getUTCDay()].replace(/^./,function(c){return c.toUpperCase()})+' '+nice(t)+'</p>';
+  var intro=firstHome;firstHome=false;
   if(!a.last){
-    h+='<div class="card hero"><div class="big">Sin datos</div><div class="sub">Registra tu periodo para ver predicciones.</div></div>';
+    h+='<div class="ringbox">'+ringSvg(a,t)+'<div class="center"><div class="cap">Sin registros</div></div></div><h2 class="head">Registra tu periodo</h2><p class="sub">Con ese dato calculamos tus próximas fechas.</p></div>';
   }else{
-    var inP=!!(S.logs[toS(t)]&&S.logs[toS(t)].flow),kicker='Día '+a.cycleDay+' del ciclo',big,sub;
-    if(inP){big='Periodo';sub='Día '+(t-a.last.start+1)+' de tu periodo'}
+    var inP=!!(todayLog&&todayLog.flow),big,sub,ph=PHASES[dayPhase(a.cycleDay,a,S.logs,t)];
+    if(inP){big='Día '+(t-a.last.start+1)+' de tu periodo';sub='Próximo inicio estimado: '+nice(a.forecast[0].start)}
     else if(a.overdue>0){big=plural(a.overdue,'día')+' de retraso';sub='Se esperaba el '+nice(t-a.overdue)}
     else if(a.next.start===t){big='Podría llegar hoy';sub='Tu periodo está previsto para hoy'}
-    else{var dd=a.next.start-t;big=(dd===1?'Falta 1 día':'Faltan '+dd+' días');sub='para tu próximo periodo'}
-    var total=Math.max(a.cycleLen,a.cycleDay),track='';
-    var ovuDay=a.cycleLen-13;
-    for(var i=1;i<=total;i++){var cl=i<=a.periodLen?'p':(i>=ovuDay-5&&i<=ovuDay+1?'f':'');
-      track+='<i class="'+cl+(i===a.cycleDay?' now':'')+'"></i>'}
-    h+='<div class="card hero"><div class="kicker">'+kicker+'</div><div class="big">'+big+'</div><div class="sub">'+sub+'</div><div class="track" aria-hidden="true">'+track+'</div></div>';
-    var f=a.next,past=f.fertEnd<t;
-    h+='<div class="card"><div class="row"><span>Próximo periodo</span><b>'+nice(f.start)+'</b></div>'+
-       '<div class="row"><span>Días fértiles estimados</span><b>'+(past?nice(a.forecast[1].fertStart)+' al '+nice(a.forecast[1].fertEnd):nice(f.fertStart)+' al '+nice(f.fertEnd))+'</b></div>'+
-       '<div class="row"><span>Ciclo promedio</span><b>'+plural(a.cycleLen,'día')+'</b></div></div>';
-    if(a.overdue>=7)h+='<div class="card warn">Tu periodo lleva más de una semana de retraso. Si hubo posibilidad de embarazo, una prueba puede aclararlo; y si los retrasos se repiten, conviene consultarlo con un profesional de salud.</div>';
+    else{var dd=a.next.start-t;big=dd===1?'Falta 1 día':'Faltan '+dd+' días';sub='Tu próximo periodo sería el '+nice(a.next.start)}
+    h+='<div class="ringbox'+(intro?' intro':'')+'">'+ringSvg(a,t)+'<div class="center"><div class="num">'+a.cycleDay+'</div><div class="cap">día del ciclo</div></div></div>'+
+       '<h2 class="head">'+big+'</h2><p class="sub">'+sub+'</p></div>'+
+       '<div class="phase" style="--c:var('+ph.c+')"><i></i><div><h3>'+ph.n+'</h3><p>'+ph.t+'</p></div></div>';
+    if(a.overdue>=7)h+='<p class="note">Si llevas más de una semana de retraso y hubo posibilidad de embarazo, una prueba puede aclararlo. Si los retrasos se repiten, consúltalo con un profesional de salud.</p>';
   }
-  var inToday=S.logs[toS(t)]&&S.logs[toS(t)].flow;
-  if(!inToday)h+='<button class="btn" onclick="startToday()">Mi periodo empezó hoy</button>';
-  h+='<button class="btn alt" onclick="openDay(\''+toS(t)+'\')">Registrar síntomas o notas de hoy</button>';
-  h+='<p class="note">Las fechas son estimaciones. No uses esta app como método anticonceptivo.</p>';
+  if(!(todayLog&&todayLog.flow))h+='<button class="btn" style="margin-top:16px" onclick="startToday()">Mi periodo empezó hoy</button>';
+  h+='<button class="btn alt"'+(todayLog&&todayLog.flow?' style="margin-top:16px"':'')+' onclick="openDay(\''+toS(t)+'\')">Registrar síntomas y notas</button>';
+  if(a.last){var f=a.next.fertEnd<t?a.forecast[1]:a.next;
+    h+='<h2 class="sec">Próximas fechas</h2><div class="group"><div class="row"><span>Periodo</span><b>'+nice(a.next.start)+'</b></div>'+
+       '<div class="row"><span>Días fértiles</span><b>'+range(f.fertStart,f.fertEnd)+'</b></div>'+
+       '<div class="row"><span>Ovulación</span><b>'+nice(f.ovu)+'</b></div></div>'+
+       '<p class="note">Son estimaciones. No uses esta app como método anticonceptivo.</p>'}
   $('app').innerHTML=h;
 }
 function startToday(){var k=todayS();S.logs[k]=S.logs[k]||{};S.logs[k].flow='medio';save();render();toast('Periodo registrado')}
+
+/* Calendario */
 function renderCal(){
-  var ts=todayS(),t=toN(ts);
-  if(!view)view={y:+ts.slice(0,4),m:+ts.slice(5,7)-1};
+  var ts=todayS(),t=toN(ts),cy=+ts.slice(0,4),cm=+ts.slice(5,7)-1;
+  if(!view)view={y:cy,m:cm};
   var a=analyze(S,t),first=new Date(Date.UTC(view.y,view.m,1)),n0=first.getTime()/DAY,
       offset=(first.getUTCDay()+6)%7,count=new Date(Date.UTC(view.y,view.m+1,0)).getUTCDate(),h='';
-  h+='<div class="card"><div class="cal-h"><button class="nav" aria-label="Mes anterior" onclick="shift(-1)">‹</button><h2>'+MONTHS[view.m]+' '+view.y+'</h2><button class="nav" aria-label="Mes siguiente" onclick="shift(1)">›</button></div><div class="grid">';
+  h+='<div class="cal-h"><button class="nav" aria-label="Mes anterior" onclick="shift(-1)">'+CHEV(-1)+'</button><h2>'+MONTHS[view.m].replace(/^./,function(c){return c.toUpperCase()})+' '+view.y+'</h2><button class="nav" aria-label="Mes siguiente" onclick="shift(1)">'+CHEV(1)+'</button></div>';
+  if(view.y!==cy||view.m!==cm)h+='<button class="jump" onclick="view=null;render()">Volver a hoy</button>';
+  h+='<div class="grid" id="grid">';
   ['L','M','X','J','V','S','D'].forEach(function(d){h+='<div class="dow">'+d+'</div>'});
   for(var i=0;i<offset;i++)h+='<div class="d out"></div>';
   for(var d=0;d<count;d++){var n=n0+d,c=classify(n,a,S.logs,t),k=Object.keys(c).join(' ');
-    h+='<button class="d '+k+(n===t?' today':'')+'" aria-label="'+nice(n)+'" onclick="openDay(\''+toS(n)+'\')">'+(d+1)+'</button>'}
-  h+='</div><div class="legend"><span><i style="background:var(--period)"></i>Periodo</span><span><i style="border:2px dashed var(--pred)"></i>Previsto</span><span><i style="background:var(--fertile-soft)"></i>Fértil</span><span><i style="background:var(--fertile)"></i>Ovulación</span></div></div>';
-  h+='<p class="note">Toca un día para registrar o corregir. Las predicciones son estimaciones.</p>';
+    h+='<button class="d '+k+(n===t?' today':'')+'" aria-label="'+nice(n)+'" onclick="openDay(\''+toS(n)+'\')"><span>'+(d+1)+'</span></button>'}
+  h+='</div><div class="legend"><span><i style="background:var(--men)"></i>Periodo</span><span><i style="border:2px dashed var(--men)"></i>Previsto</span><span><i style="background:var(--fer-t)"></i>Fértil</span><span><i style="background:var(--fer)"></i>Ovulación</span></div>';
+  h+='<p class="note">Toca un día para registrar o corregir. Desliza para cambiar de mes.</p>';
   $('app').innerHTML=h;
+  var g=$('grid'),sx=null;
+  g.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  g.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>60)shift(dx<0?1:-1)},{passive:true});
 }
 function shift(x){var m=view.m+x;view={y:view.y+Math.floor(m/12),m:((m%12)+12)%12};render()}
+
+/* Registro de un día */
 function openDay(k){
-  var n=toN(k),t=toN(todayS()),future=n>t,l=S.logs[k]||{},a=analyze(S,t),h='<div class="scrim" onclick="if(event.target===this)closeSheet()"><div class="sheet"><h3>'+nice(n)+'</h3>';
+  var n=toN(k),t=toN(todayS()),future=n>t,l=S.logs[k]||{},a=analyze(S,t),old=document.querySelector('.sheet'),top=old?old.scrollTop:0,
+      dt=new Date(n*DAY),h='<div class="scrim'+(sheetOpen?' noanim':'')+'" onclick="if(event.target===this)closeSheet()"><div class="sheet"><div class="grab"></div><h3>'+WEEK[dt.getUTCDay()].replace(/^./,function(c){return c.toUpperCase()})+' '+nice(n)+'</h3>';
   if(future){
-    var c=classify(n,a,S.logs,t),msg=c.pred?'Periodo previsto.':c.ovu?'Ovulación estimada.':c.fert?'Día fértil estimado.':'Sin predicciones para este día.';
-    h+='<p>'+msg+'</p><p class="note">No se pueden registrar días futuros.</p><button class="btn alt" onclick="closeSheet()">Cerrar</button></div></div>';
+    var c=classify(n,a,S.logs,t),msg=c.pred?'Periodo previsto.':c.ovu?'Ovulación estimada.':c.fert?'Día fértil estimado.':'Sin eventos previstos.';
+    h+='<p style="margin-top:8px">'+msg+'</p><p class="note">Podrás registrar este día cuando llegue.</p><button class="btn alt" onclick="closeSheet()">Cerrar</button></div></div>';
     $('modal').innerHTML=h;sheetOpen=true;return;
   }
-  h+='<div class="label">Periodo</div><div class="chips"><button class="chip '+(!l.flow?'on':'')+'" onclick="setFlow(\''+k+'\',\'\')">Sin sangrado</button>';
-  Object.keys(FLOWS).forEach(function(f){h+='<button class="chip '+(l.flow===f?'on':'')+'" onclick="setFlow(\''+k+'\',\''+f+'\')">'+FLOWS[f]+'</button>'});
+  h+='<div class="label">Sangrado</div><div class="chips"><button class="chip '+(!l.flow?'on':'')+'" aria-pressed="'+!l.flow+'" onclick="setFlow(\''+k+'\',\'\')">Ninguno</button>';
+  Object.keys(FLOWS).forEach(function(f){h+='<button class="chip flow '+(l.flow===f?'on':'')+'" aria-pressed="'+(l.flow===f)+'" onclick="setFlow(\''+k+'\',\''+f+'\')">'+FLOWS[f]+'</button>'});
   h+='</div>';
   if(l.flow&&n<t)h+='<button class="btn alt" onclick="fillFrom(\''+k+'\')">Marcar '+plural(a.periodLen,'día')+' desde esta fecha</button>';
   h+='<div class="label">Síntomas</div><div class="chips">';
-  SYMPTOMS.forEach(function(s,i){var on=(l.symptoms||[]).indexOf(s)>=0;h+='<button class="chip '+(on?'on':'')+'" onclick="togSym(\''+k+'\','+i+')">'+s+'</button>'});
-  h+='</div><div class="label">Notas</div><textarea id="note" onchange="setNote(\''+k+'\',this.value)">'+esc(l.note||'')+'</textarea>'+
-     '<button class="btn" onclick="setNote(\''+k+'\',$(\'note\').value);closeSheet()">Listo</button></div></div>';
+  SYMPTOMS.forEach(function(s,i){var on=(l.symptoms||[]).indexOf(s)>=0;h+='<button class="chip '+(on?'on':'')+'" aria-pressed="'+on+'" onclick="togSym(\''+k+'\','+i+')">'+s+'</button>'});
+  h+='</div><div class="label">Notas</div><textarea id="note" aria-label="Notas" onchange="setNote(\''+k+'\',this.value)">'+esc(l.note||'')+'</textarea>'+
+     '<button class="btn" onclick="setNote(\''+k+'\',$(\'note\').value);closeSheet()">Guardar</button></div></div>';
   $('modal').innerHTML=h;sheetOpen=true;
+  document.querySelector('.sheet').scrollTop=top;
 }
 function clean(k){var l=S.logs[k];if(l&&!l.flow&&!(l.symptoms&&l.symptoms.length)&&!l.note)delete S.logs[k]}
-function setFlow(k,f){var note=$('note')&&$('note').value;S.logs[k]=S.logs[k]||{};if(note!==undefined&&note!==null)S.logs[k].note=note;if(f)S.logs[k].flow=f;else delete S.logs[k].flow;clean(k);save();openDay(k);render()}
+function keepNote(k){var e=$('note');if(e){S.logs[k]=S.logs[k]||{};S.logs[k].note=e.value}}
+function setFlow(k,f){keepNote(k);S.logs[k]=S.logs[k]||{};if(f)S.logs[k].flow=f;else delete S.logs[k].flow;clean(k);save();openDay(k);render()}
 function fillFrom(k){fillPeriod(k,analyze(S,toN(todayS())).periodLen);save();closeSheet();toast('Periodo marcado')}
-function togSym(k,i){var note=$('note').value,l=S.logs[k]=S.logs[k]||{},a=l.symptoms=l.symptoms||[],s=SYMPTOMS[i],p=a.indexOf(s);l.note=note;if(p>=0)a.splice(p,1);else a.push(s);clean(k);save();openDay(k);render()}
+function togSym(k,i){keepNote(k);var l=S.logs[k]=S.logs[k]||{},a=l.symptoms=l.symptoms||[],s=SYMPTOMS[i],p=a.indexOf(s);if(p>=0)a.splice(p,1);else a.push(s);clean(k);save();openDay(k);render()}
 function setNote(k,v){S.logs[k]=S.logs[k]||{};S.logs[k].note=v.trim();clean(k);save()}
 function closeSheet(){$('modal').innerHTML='';sheetOpen=false;render()}
+
+/* Resumen */
 function renderStats(){
-  var t=toN(todayS()),a=analyze(S,t),h='<h1 class="top">Resumen</h1><div class="card">'+
-  '<div class="row"><span>Duración del ciclo</span><b>'+plural(a.cycleLen,'día')+(a.valid.length?'':' (tu dato inicial)')+'</b></div>'+
-  '<div class="row"><span>Duración del periodo</span><b>'+plural(a.periodLen,'día')+'</b></div>'+
-  '<div class="row"><span>Ciclos registrados</span><b>'+a.cycles.length+'</b></div>'+
+  var t=toN(todayS()),a=analyze(S,t),h='<h1 class="title">Resumen</h1><div class="group">'+
+  '<div class="row"><span>Ciclo promedio</span><b>'+plural(a.cycleLen,'día')+(a.valid.length?'':' (dato inicial)')+'</b></div>'+
+  '<div class="row"><span>Periodo promedio</span><b>'+plural(a.periodLen,'día')+'</b></div>'+
+  '<div class="row"><span>Ciclos completos</span><b>'+a.cycles.length+'</b></div>'+
   (a.valid.length>1?'<div class="row"><span>Variación reciente</span><b>'+plural(a.range,'día')+'</b></div>':'')+'</div>';
-  if(a.range>7)h+='<div class="card warn">Tus ciclos recientes varían más de 7 días, así que las predicciones serán menos precisas. Si te preocupa, coméntalo con un profesional de salud.</div>';
-  if(a.periods.length){
-    h+='<div class="card"><h2 style="font-size:19px;margin-bottom:8px">Historial</h2>';
-    a.periods.slice().reverse().slice(0,12).forEach(function(p,i,arr){
-      var next=arr[i-1],len=next?next.start-p.start:null;
-      h+='<div class="hist"><div><b>'+nice(p.start)+' '+new Date(p.start*DAY).getUTCFullYear()+'</b><span>'+plural(p.end-p.start+1,'día')+' de periodo</span></div>'+
-      (len?'<span>Ciclo de '+plural(len,'día')+'</span><div class="bar" style="width:'+Math.min(100,len/MAX_CYCLE*100)+'%"></div>':'<span>Ciclo actual</span>')+'</div>'});
-    h+='</div>';
-  }
+  if(a.range>7)h+='<p class="note">Tus ciclos recientes varían más de 7 días, así que las predicciones serán menos precisas. Si te preocupa, coméntalo con un profesional de salud.</p>';
+  h+='<h2 class="sec">Duración de tus ciclos</h2>';
+  if(a.cycles.length){
+    var rec=a.periods.slice(1).map(function(p,i){return{len:a.cycles[i],start:a.periods[i].start}}).slice(-8),mx=Math.max.apply(0,rec.map(function(r){return r.len}).concat([35]));
+    h+='<div class="chartbox"><div class="chart" role="img" aria-label="Últimos ciclos en días">';
+    rec.forEach(function(r){var m=MONTHS[new Date(r.start*DAY).getUTCMonth()].slice(0,3);
+      h+='<div class="col"><b>'+r.len+'</b><i style="height:'+Math.round(r.len/mx*100)+'px"></i>'+m+'</div>'});
+    h+='</div></div>';
+  }else h+='<p class="note" style="margin-top:0">Aparecerá cuando registres el inicio de tu próximo periodo.</p>';
   var counts={};Object.keys(S.logs).forEach(function(k){(S.logs[k].symptoms||[]).forEach(function(s){counts[s]=(counts[s]||0)+1})});
   var top=Object.keys(counts).sort(function(x,y){return counts[y]-counts[x]}).slice(0,6);
-  if(top.length){h+='<div class="card"><h2 style="font-size:19px;margin-bottom:8px">Síntomas más frecuentes</h2>';
-    top.forEach(function(s){h+='<div class="row"><span>'+esc(s)+'</span><b>'+plural(counts[s],'vez').replace('vezs','veces')+'</b></div>'});h+='</div>'}
+  if(top.length){h+='<h2 class="sec">Síntomas más frecuentes</h2><div class="group">';
+    top.forEach(function(s){h+='<div class="sym"><div><b style="font-weight:500">'+esc(s)+'</b><span>'+(counts[s]===1?'1 vez':counts[s]+' veces')+'</span></div><div class="bar"><i style="width:'+Math.round(counts[s]/counts[top[0]]*100)+'%"></i></div></div>'});h+='</div>'}
+  if(a.periods.length){
+    h+='<h2 class="sec">Historial</h2><div class="group">';
+    a.periods.slice().reverse().slice(0,12).forEach(function(p,i,arr){var nx=arr[i-1],len=nx?nx.start-p.start:null;
+      h+='<div class="row"><span style="color:var(--ink)">'+nice(p.start)+' de '+new Date(p.start*DAY).getUTCFullYear()+'<small style="display:block;color:var(--soft);font-size:13px">'+(len?'Ciclo de '+plural(len,'día'):'Ciclo actual')+'</small></span><b style="white-space:nowrap">'+plural(p.end-p.start+1,'día')+'</b></div>'});
+    h+='</div>';
+  }
   $('app').innerHTML=h;
 }
+
+/* Ajustes */
 function renderAjustes(){
-  $('app').innerHTML='<h1 class="top">Ajustes</h1><div class="card"><p style="margin-top:0;color:var(--soft);font-size:14px">Se usan hasta que tengas registros suficientes.</p>'+
-  '<div class="label">Duración del periodo (días)</div><input type="number" id="s2" min="1" max="15" value="'+S.settings.period+'">'+
-  '<div class="label">Duración del ciclo (días)</div><input type="number" id="s1" min="15" max="60" value="'+S.settings.cycle+'">'+
-  '<button class="btn" onclick="saveSettings()">Guardar</button></div>'+
-  '<div class="card"><h2 style="font-size:19px">Copia de seguridad</h2><p style="color:var(--soft);font-size:14px">Si desinstalas la app se borran tus datos. Guarda una copia antes de cambiar de teléfono.</p>'+
-  '<button class="btn alt" onclick="exportData()">Exportar datos</button><button class="btn alt" onclick="importSheet()">Importar datos</button></div>'+
-  '<div class="card"><button class="btn danger" style="margin-top:0" onclick="wipeSheet()">Borrar todos mis datos</button></div>'+
-  '<p class="note">Mi Ciclo funciona sin internet y no envía tus datos a ningún lugar. No sustituye la atención médica ni es un método anticonceptivo.</p>';
+  var r=S.settings.reminder,denied=r.on&&window.Android&&Android.notificationsAllowed&&!Android.notificationsAllowed();
+  var h='<h1 class="title">Ajustes</h1><div class="group"><div class="row"><span style="color:var(--ink)">Recordatorio de periodo</span><button class="switch" role="switch" aria-label="Recordatorio de periodo" aria-checked="'+r.on+'" onclick="togReminder()"></button></div>';
+  if(r.on){h+='<div class="row" style="display:block"><div style="color:var(--soft);margin-bottom:8px">Avisarme antes</div><div class="chips">';
+    [1,2,3,5].forEach(function(d){h+='<button class="chip '+(r.days===d?'on':'')+'" aria-pressed="'+(r.days===d)+'" onclick="setRemDays('+d+')">'+plural(d,'día')+'</button>'});h+='</div></div>'}
+  h+='</div>';
+  if(denied)h+='<p class="note">Las notificaciones están desactivadas. Actívalas para Mi Ciclo en los ajustes de tu teléfono.</p>';
+  h+='<h2 class="sec">Privacidad</h2><div class="group"><div class="row"><span style="color:var(--ink)">Bloquear con PIN</span><button class="switch" role="switch" aria-label="Bloquear con PIN" aria-checked="'+!!S.pin+'" onclick="togPin()"></button></div></div>'+
+  '<p class="note">Tus datos se guardan solo en este teléfono y la app no puede usar internet. Si olvidas el PIN, tendrás que borrar los datos para volver a entrar.</p>'+
+  '<h2 class="sec">Valores iniciales</h2><div class="group"><div class="row"><span>Duración del periodo</span><input style="width:84px;text-align:center" aria-label="Duración del periodo en días" type="number" id="s2" min="1" max="15" value="'+S.settings.period+'" onchange="saveSettings()"></div>'+
+  '<div class="row"><span>Duración del ciclo</span><input style="width:84px;text-align:center" aria-label="Duración del ciclo en días" type="number" id="s1" min="15" max="60" value="'+S.settings.cycle+'" onchange="saveSettings()"></div></div>'+
+  '<p class="note">Se usan hasta que tengas registros suficientes.</p>'+
+  '<h2 class="sec">Copia de seguridad</h2><div class="group"><button class="link" onclick="exportData()"><span>Exportar datos<small>Compártelos contigo por correo o Drive</small></span></button><button class="link" onclick="importSheet()"><span>Importar datos<small>Reemplaza los datos actuales</small></span></button></div>'+
+  '<p class="note">Si desinstalas la app se borran tus datos. Guarda una copia antes de cambiar de teléfono.</p>'+
+  '<button class="btn danger" onclick="wipeSheet()">Borrar todos mis datos</button>'+
+  '<p class="note" style="text-align:center;margin-top:20px">Mi Ciclo '+VERSION+'. No sustituye la atención médica ni es un método anticonceptivo.</p>';
+  $('app').innerHTML=h;
 }
+function togReminder(){var r=S.settings.reminder;r.on=!r.on;if(r.on&&window.Android&&Android.requestNotifications)Android.requestNotifications();save();render();if(r.on)toast('Recordatorio activado')}
+function setRemDays(d){S.settings.reminder.days=d;save();render()}
 function saveSettings(){var p=+$('s2').value,c=+$('s1').value;
-  if(!(p>=1&&p<=15)||!(c>=15&&c<=60))return toast('Periodo: 1 a 15 días. Ciclo: 15 a 60');
-  S.settings={cycle:c,period:p};save();toast('Guardado')}
-function exportData(){var txt=JSON.stringify(S);
+  if(!(p>=1&&p<=15)||!(c>=15&&c<=60)){render();return toast('Periodo: de 1 a 15 días. Ciclo: de 15 a 60 días.')}
+  S.settings.cycle=c;S.settings.period=p;save();toast('Cambios guardados')}
+function exportData(){var o=JSON.parse(JSON.stringify(S));delete o.pin;var txt=JSON.stringify(o);
   if(window.Android&&Android.share){Android.share(txt);return}
-  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){toast('Copiado al portapapeles')},function(){toast('No se pudo copiar')})}}
-function importSheet(){$('modal').innerHTML='<div class="scrim" onclick="if(event.target===this)closeSheet()"><div class="sheet"><h3>Importar datos</h3><p class="note">Pega el texto que exportaste. Reemplazará los datos actuales.</p><textarea id="imp"></textarea><button class="btn" onclick="doImport()">Importar</button><button class="btn alt" onclick="closeSheet()">Cancelar</button></div></div>';sheetOpen=true}
-function doImport(){try{var o=JSON.parse($('imp').value);if(!valid(o))throw 0;o.onboarded=true;S=o;save();closeSheet();toast('Datos importados')}catch(e){toast('El texto no es una copia válida')}}
-function wipeSheet(){$('modal').innerHTML='<div class="scrim" onclick="if(event.target===this)closeSheet()"><div class="sheet"><h3>¿Borrar todo?</h3><p>Se eliminarán todos tus registros de este teléfono. No se puede deshacer.</p><button class="btn danger" onclick="doWipe()">Sí, borrar todo</button><button class="btn alt" onclick="closeSheet()">Cancelar</button></div></div>';sheetOpen=true}
-function doWipe(){S=fresh();tab='hoy';view=null;save();closeSheet()}
-window.onBack=function(){if(sheetOpen){closeSheet();return true}if(S.onboarded&&tab!=='hoy'){setTab('hoy');return true}return false};
-window.MC={periods:periods,analyze:analyze,classify:classify,toN:toN,toS:toS,valid:valid};
-render();
+  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){toast('Datos copiados')},function(){toast('No se pudieron copiar los datos.')})}}
+function sheet(inner){$('modal').innerHTML='<div class="scrim" onclick="if(event.target===this)closeSheet()"><div class="sheet"><div class="grab"></div>'+inner+'</div></div>';sheetOpen=true}
+function importSheet(){sheet('<h3>Importar datos</h3><p class="note">Pega el texto que exportaste. Reemplazará los datos actuales.</p><textarea id="imp" aria-label="Datos exportados"></textarea><button class="btn" onclick="doImport()">Importar datos</button><button class="btn alt" onclick="closeSheet()">Cancelar</button>')}
+function doImport(){try{var o=JSON.parse($('imp').value);if(!valid(o))throw 0;migrate(o);o.onboarded=true;if(S.pin)o.pin=S.pin;S=o;save();closeSheet();toast('Datos importados')}catch(e){toast('Ese texto no es una copia de Mi Ciclo.')}}
+function wipeSheet(){sheet('<h3>¿Borrar todos tus datos?</h3><p style="margin-top:8px">Se eliminarán tus registros de este teléfono. No se puede deshacer.</p><button class="btn danger" onclick="doWipe()">Borrar todos mis datos</button><button class="btn alt" onclick="closeSheet()">Cancelar</button>')}
+function doWipe(){S=fresh();tab='hoy';view=null;ob=null;firstHome=true;save();closeLock();closeSheet()}
+
+/* PIN: evita que otras personas abran la app en tu teléfono */
+var pin=null,pausedAt=0;
+function hash(p){var s='miciclo:'+p,h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return(h>>>0).toString(16)}
+function togPin(){if(S.pin){delete S.pin;save();render();return toast('PIN desactivado')}pin={mode:'set',buf:''};renderLock()}
+function lockNow(){pin={mode:'unlock',buf:''};renderLock()}
+function closeLock(){pin=null;$('lock').innerHTML=''}
+function renderLock(msg){
+  var title={unlock:'Escribe tu PIN',set:'Crea un PIN de 4 dígitos',confirm:'Repite tu PIN'}[pin.mode],k='';
+  [1,2,3,4,5,6,7,8,9].forEach(function(n){k+='<button onclick="key('+n+')">'+n+'</button>'});
+  k+=(pin.mode==='unlock'?'<span></span>':'<button style="font-size:14px" onclick="closeLock();render()">Cancelar</button>')+'<button onclick="key(0)">0</button><button style="font-size:14px" aria-label="Borrar" onclick="pin.buf=pin.buf.slice(0,-1);renderLock()">Borrar</button>';
+  $('lock').innerHTML='<div class="lock"><h2>'+title+'</h2><p role="status">'+(msg||'')+'</p><div class="pdots">'+[0,1,2,3].map(function(i){return'<i class="'+(i<pin.buf.length?'on':'')+'"></i>'}).join('')+'</div><div class="keys">'+k+'</div>'+
+    (pin.mode==='unlock'?'<button class="forgot" onclick="forgot()">Olvidé mi PIN</button>':'')+'</div>';
+}
+function key(n){
+  if(pin.buf.length>=4)return;pin.buf+=n;
+  if(pin.buf.length<4)return renderLock();
+  if(pin.mode==='unlock'){if(hash(pin.buf)===S.pin){closeLock();render()}else{pin.buf='';renderLock('PIN incorrecto. Inténtalo de nuevo.')}return}
+  if(pin.mode==='set'){pin={mode:'confirm',first:pin.buf,buf:''};return renderLock()}
+  if(pin.buf===pin.first){S.pin=hash(pin.buf);save();closeLock();render();toast('PIN activado')}
+  else{pin={mode:'set',buf:''};renderLock('Los PIN no coinciden. Vuelve a crearlo.')}
+}
+function forgot(){$('lock').innerHTML='<div class="lock"><h2>¿Borrar datos para entrar?</h2><p style="min-height:0;max-width:300px">Por privacidad, el PIN no se puede recuperar. Puedes borrar tus registros de este teléfono y empezar de nuevo.</p><button class="btn danger" style="max-width:300px" onclick="doWipe()">Borrar todos mis datos</button><button class="btn alt" style="max-width:300px" onclick="lockNow()">Volver</button></div>'}
+
+window.onBack=function(){if(pin)return false;if(sheetOpen){closeSheet();return true}if(S.onboarded&&tab!=='hoy'){setTab('hoy');return true}return false};
+window.onAppPause=function(){pausedAt=Date.now()};
+window.onAppResume=function(){if(S.pin&&!pin&&pausedAt&&Date.now()-pausedAt>30000)lockNow();pausedAt=0;if(tab==='ajustes'&&!pin&&!sheetOpen)render()};
+window.MC={periods:periods,analyze:analyze,classify:classify,dayPhase:dayPhase,reminderAt:reminderAt,toN:toN,toS:toS,valid:valid,hash:hash};
+render();syncReminder();if(S.pin)lockNow();
 </script>
 </body>
 </html>

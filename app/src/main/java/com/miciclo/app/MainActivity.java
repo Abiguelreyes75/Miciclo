@@ -1,7 +1,10 @@
 package com.miciclo.app;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -13,7 +16,7 @@ import android.webkit.WebViewClient;
 public class MainActivity extends Activity {
     private WebView web;
 
-    /** Puente mínimo: lo único que la página puede pedirle a Android es compartir su copia de seguridad. */
+    /** Lo único que la página puede pedirle a Android. */
     public class Bridge {
         @JavascriptInterface
         public void share(final String text) {
@@ -28,12 +31,30 @@ public class MainActivity extends Activity {
                 }
             });
         }
+
+        @JavascriptInterface
+        public void setReminder(double atMillis, String text) {
+            Reminders.save(MainActivity.this, (long) atMillis, text);
+        }
+
+        @JavascriptInterface
+        public boolean notificationsAllowed() {
+            return ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).areNotificationsEnabled();
+        }
+
+        @JavascriptInterface
+        public void requestNotifications() {
+            if (Build.VERSION.SDK_INT >= 33) {
+                requestPermissions(new String[] {Manifest.permission.POST_NOTIFICATIONS}, 1);
+            }
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         web = new WebView(this);
+        web.setBackgroundColor(0);
         WebSettings settings = web.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
@@ -48,6 +69,18 @@ public class MainActivity extends Activity {
         web.addJavascriptInterface(new Bridge(), "Android");
         setContentView(web);
         web.loadUrl("file:///android_asset/index.html");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        web.evaluateJavascript("window.onAppPause&&window.onAppPause()", null);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        web.evaluateJavascript("window.onAppResume&&window.onAppResume()", null);
     }
 
     @Override

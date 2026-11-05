@@ -1,6 +1,6 @@
 # Mi Ciclo
 
-App Android de seguimiento del ciclo menstrual. Funciona sin internet y guarda los datos solo en el teléfono.
+App Android de seguimiento del ciclo menstrual. Guarda los datos solo en el teléfono y no tiene permiso para usar internet.
 
 ## Generar la APK con GitHub (sin instalar nada)
 
