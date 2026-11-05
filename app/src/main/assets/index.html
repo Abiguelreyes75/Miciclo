@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Mi Ciclo</title>
 <style>
-:root{--bg:#f6f3fb;--surface:#fff;--sunk:#ebe6f3;--ink:#261733;--soft:#6b5d79;--line:#e0d9ea;--men:#c4254f;--fol:#5a5fcf;--fer:#0b8585;--lut:#b87503;--men-t:#f9dfe5;--fer-t:#d3eeee;--brand:#4b2a6b;--on:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#160f20;--surface:#221831;--sunk:#2e2340;--ink:#f3edf9;--soft:#b3a6c2;--line:#392c4d;--men:#f0638a;--fol:#9a9dfa;--fer:#4fcdc8;--lut:#eeb04a;--men-t:#54203a;--fer-t:#123f46;--brand:#c9a9ec;--on:#1d1029}}
+:root{--bg:#fff4f7;--surface:#fff;--sunk:#fde3eb;--ink:#43182c;--soft:#86566b;--line:#f7d3de;--brand:#c93b76;--on:#fff;--men:#c9285f;--fol:#8a5fd1;--fer:#0b8585;--lut:#a66a00;--men-t:#fbdde7;--fer-t:#d3eeee;--display:'Google Sans',Roboto,system-ui,sans-serif}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 'Google Sans',Roboto,system-ui,sans-serif}
 button,input,textarea{font:inherit;color:inherit}
@@ -14,13 +13,15 @@ button{cursor:pointer;border:0;background:none;padding:0}
 :focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 h1,h2,h3,p{margin:0}
 main{max-width:520px;margin:auto;padding:22px 20px 104px}
+.title,.head,.sec,.step h1,.sheet h3,.cal-h h2,.lock h2,.hello{font-family:var(--display)}
+.hello{font-size:30px;font-weight:500;line-height:1.2}
 .title{font-size:28px;font-weight:500;letter-spacing:-.01em;margin-bottom:18px}
 .sec{font-size:18px;font-weight:500;margin:28px 0 10px}
-.group{background:var(--surface);border-radius:20px;padding:4px 16px}
+.group{background:var(--surface);border-radius:26px;padding:4px 16px}
 .row{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:54px;padding:10px 0;border-top:1px solid var(--line)}
 .row:first-child{border-top:0}.row>span:first-child{color:var(--soft)}.row b{font-weight:500;text-align:right}
 .note{font-size:13px;color:var(--soft);margin:14px 2px}
-.btn{display:block;width:100%;min-height:52px;border-radius:16px;background:var(--brand);color:var(--on);font-weight:500;margin-top:10px}
+.btn{display:block;width:100%;min-height:52px;border-radius:26px;background:var(--brand);color:var(--on);font-weight:500;margin-top:10px}
 .btn:active{transform:scale(.985)}
 .btn.alt{background:var(--sunk);color:var(--ink)}
 .btn.danger{background:none;color:var(--men);border:1.5px solid var(--men)}
@@ -32,11 +33,11 @@ main{max-width:520px;margin:auto;padding:22px 20px 104px}
 .intro .seg{animation:seg .45s ease both;animation-delay:calc(var(--i)*18ms)}
 @keyframes seg{from{opacity:0}}
 .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.center .num{font-size:82px;line-height:1;font-weight:300;letter-spacing:-.03em}
+.center .num{font-family:var(--display);font-size:76px;line-height:1;font-weight:300;letter-spacing:-.03em}
 .center .cap{font-size:14px;color:var(--soft);margin-top:4px}
 .head{font-size:24px;font-weight:500;letter-spacing:-.01em;margin-top:8px}
 .sub{color:var(--soft);margin-top:2px}
-.phase{display:flex;gap:12px;background:var(--surface);border-radius:20px;padding:15px 16px;margin-top:18px}
+.phase{display:flex;gap:12px;background:var(--surface);border-radius:26px;padding:15px 16px;margin-top:18px}
 .phase i{flex:none;width:5px;border-radius:3px;background:var(--c)}
 .phase h3{font-size:16px;font-weight:500;color:var(--c)}
 .phase p{font-size:14px;color:var(--soft);margin-top:2px}
@@ -70,16 +71,17 @@ main{max-width:520px;margin:auto;padding:22px 20px 104px}
 .sheet h3{font-size:22px;font-weight:500}
 .label{font-weight:500;margin:18px 0 8px;font-size:14px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{min-height:40px;padding:0 14px;border-radius:12px;background:var(--surface);font-size:14px}
+.chip{min-height:40px;padding:0 15px;border-radius:20px;background:var(--surface);font-size:14px}
 .chip.on{background:var(--brand);color:var(--on)}
 .chip.flow.on{background:var(--men)}
+.group .chip:not(.on){background:var(--sunk)}
 input,textarea{width:100%;padding:13px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface)}
 textarea{min-height:80px;resize:vertical}
 .chart{display:flex;align-items:flex-end;gap:8px;height:150px;position:relative;margin-top:10px}
 .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:12px;color:var(--soft);min-width:0}
 .col i{display:block;width:100%;max-width:30px;background:var(--fol);border-radius:7px 7px 2px 2px;margin:3px 0}
 .col b{font-weight:500;color:var(--ink)}
-.chartbox{background:var(--surface);border-radius:20px;padding:14px 16px}
+.chartbox{background:var(--surface);border-radius:26px;padding:14px 16px}
 .bar{height:7px;border-radius:4px;background:var(--sunk);margin-top:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--brand);border-radius:4px}
 .sym{padding:9px 0;font-size:14px}.sym div:first-child{display:flex;justify-content:space-between}.sym span{color:var(--soft)}
 .switch{width:50px;height:30px;border-radius:15px;background:var(--line);position:relative;flex:none;transition:background .15s}
@@ -87,6 +89,12 @@ textarea{min-height:80px;resize:vertical}
 .switch[aria-checked=true]{background:var(--brand)}.switch[aria-checked=true]::after{left:23px}
 .link{display:flex;width:100%;justify-content:space-between;align-items:center;gap:14px;min-height:54px;padding:10px 0;border-top:1px solid var(--line);text-align:left}
 .link:first-child{border-top:0}.link small{color:var(--soft);font-size:13px;display:block}
+.swatches{display:flex;gap:12px;flex-wrap:wrap}
+.sw{width:44px;height:44px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2px var(--bg),0 0 0 2px transparent}
+.sw.on{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--ink)}
+.field{display:block;padding:10px 0;border-top:1px solid var(--line)}.field:first-child{border-top:0}
+.field>div:first-child{color:var(--soft);margin-bottom:8px}
+.symrow{display:flex;gap:8px;margin-top:14px}.symrow .btn{margin:0;width:auto;padding:0 20px;flex:none}
 .toast{position:fixed;left:50%;bottom:94px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 15px;border-radius:12px;font-size:14px;z-index:9;max-width:90%;text-align:center}
 .step{min-height:calc(100vh - 44px);display:flex;flex-direction:column}
 .step h1{font-size:30px;line-height:1.2;font-weight:500;letter-spacing:-.015em;margin:34px 0 10px}
@@ -109,15 +117,36 @@ textarea{min-height:80px;resize:vertical}
 <div id="lock"></div>
 <script>
 'use strict';
-var KEY='miciclo.v1',DAY=864e5,VERSION='2.0';
+var KEY='miciclo.v1',DAY=864e5,VERSION='3.0';
 var MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 var WEEK=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 var FLOWS={ligero:'Ligero',medio:'Medio',abundante:'Abundante'};
 var SYMPTOMS=['Cólicos','Dolor de cabeza','Dolor de espalda','Sensibilidad en senos','Hinchazón','Acné','Cansancio','Náuseas','Antojos','Cambios de ánimo','Ansiedad','Insomnio'];
 var MIN_CYCLE=15,MAX_CYCLE=60;
+var THEMES={
+ rosa:{n:'Rosa',l:['#fff4f7','#fff','#fde3eb','#43182c','#86566b','#f7d3de','#c93b76','#fff'],d:['#241019','#321826','#47223a','#fdeef4','#d5aebf','#4f2a3c','#f58cb6','#3a0f22']},
+ lavanda:{n:'Lavanda',l:['#f8f4ff','#fff','#ece2fb','#2f1d4a','#6e5c8a','#e3d7f5','#7d4fc4','#fff'],d:['#1b1329','#271c3a','#352851','#f3edff','#b9aad2','#3d2f59','#c3a3f5','#24123f']},
+ durazno:{n:'Durazno',l:['#fff6f0','#fff','#ffe6d8','#4a2318','#8a5f50','#fbdccc','#c04f34','#fff'],d:['#26140f','#341d16','#4a2b20','#fff0e8','#d8b4a4','#53301f','#ffab8f','#3d140a']},
+ cereza:{n:'Cereza',l:['#fff3f4','#fff','#fbdfe3','#470f1e','#875260','#f5cdd5','#a8123f','#fff'],d:['#210a11','#30121c','#471b2a','#ffecf0','#d9a8b5','#52202f','#ff7f9f','#3a0614']},
+ menta:{n:'Menta',l:['#f1fbf8','#fff','#d9f3ec','#123a33','#4f7870','#c9ebe2','#15806d','#fff'],d:['#0e1f1c','#162c28','#213f39','#e8faf5','#a3c9c0','#2b4a43','#6fdcc6','#07302a']}
+};
+var VARS=['bg','surface','sunk','ink','soft','line','brand','on'];
+var FONTS={suave:['Suave',"'Google Sans',Roboto,system-ui,sans-serif"],elegante:['Elegante',"Georgia,'Noto Serif',serif"],manuscrita:['Manuscrita',"'Dancing Script',cursive"]};
+var DEF_PREFS={name:'',theme:'rosa',mode:'auto',font:'suave',shape:'flor',week:'lun',showFertile:true,customSym:[],hiddenSym:[]};
+function P(){return S.settings.prefs}
+function isDark(){var m=P().mode;return m==='dark'||(m==='auto'&&window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)}
+function applyTheme(){
+  var dk=isDark(),t=(THEMES[P().theme]||THEMES.rosa)[dk?'d':'l'],st=document.documentElement.style;
+  VARS.forEach(function(v,i){st.setProperty('--'+v,t[i])});
+  var ph=dk?{men:'#f4709d',fol:'#b89cf7',fer:'#4fcdc8',lut:'#eeb04a','fer-t':'#123f46'}:{men:'#c9285f',fol:'#8a5fd1',fer:'#0b8585',lut:'#a66a00','fer-t':'#d3eeee'};
+  Object.keys(ph).forEach(function(k){st.setProperty('--'+k,ph[k])});
+  st.setProperty('--display',(FONTS[P().font]||FONTS.suave)[1]);st.colorScheme=dk?'dark':'light';
+  if(window.Android&&Android.setBars)Android.setBars(t[0],t[1],!dk);
+}
+function symptomList(){return SYMPTOMS.filter(function(s){return P().hiddenSym.indexOf(s)<0}).concat(P().customSym)}
 var PHASES={
   men:{n:'Menstruación',c:'--men',t:'El revestimiento del útero se desprende. Es común sentir cólicos o cansancio.'},
-  fol:{n:'Fase folicular',c:'--fol',t:'El cuerpo se prepara para ovular. Muchas personas notan más energía en estos días.'},
+  fol:{n:'Fase folicular',c:'--fol',t:'El cuerpo se prepara para ovular. Muchas notan más energía en estos días.'},
   fer:{n:'Días fértiles',c:'--fer',t:'Hay más probabilidad de embarazo. Es una estimación: no la uses como anticonceptivo.'},
   lut:{n:'Fase lútea',c:'--lut',t:'Después de la ovulación. Puedes notar hinchazón, sensibilidad o cambios de ánimo.'},
   late:{n:'Periodo retrasado',c:'--men',t:'Un retraso de pocos días es frecuente; el estrés o los cambios de rutina pueden influir.'}
@@ -174,7 +203,7 @@ function dayPhase(i,a,logs,today){
   if(n>today&&i<=a.periodLen&&a.last.end>=today-1)return'men';
   var o=a.cycleLen-13;
   if(i>a.cycleLen)return'late';
-  if(i>=o-5&&i<=o+1)return'fer';
+  if(i>=o-5&&i<=o+1&&P().showFertile!==false)return'fer';
   return i<o-5?'fol':'lut';
 }
 function classify(n,a,logs,today){
@@ -183,15 +212,15 @@ function classify(n,a,logs,today){
   if(l&&(l.flow||(l.symptoms&&l.symptoms.length)||l.note))c.log=true;
   if(n>=today)a.forecast.forEach(function(f){
     if(n>=f.start&&n<=f.end&&!c.period)c.pred=true;
-    if(n>=f.fertStart&&n<=f.fertEnd&&!c.period&&!c.pred)c[n===f.ovu?'ovu':'fert']=true;
+    if(P().showFertile!==false&&n>=f.fertStart&&n<=f.fertEnd&&!c.period&&!c.pred)c[n===f.ovu?'ovu':'fert']=true;
   });
   return c;
 }
-/* Primer aviso futuro: 9:00 de la mañana, `days` días antes de un periodo previsto. */
-function reminderAt(a,days,now){
+/* Primer aviso futuro: a la hora elegida, `days` días antes de un periodo previsto. */
+function reminderAt(a,days,now,hour){
   for(var i=0;i<a.forecast.length;i++){
     var d=new Date((a.forecast[i].start-days)*DAY),
-        t=new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate(),9).getTime();
+        t=new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate(),hour===undefined?9:hour).getTime();
     if(t>now)return t;
   }
   return 0;
@@ -199,12 +228,15 @@ function reminderAt(a,days,now){
 
 /* ---- almacenamiento: solo en este teléfono ---- */
 var mem=null;
-function fresh(){return{logs:{},settings:{cycle:28,period:5,reminder:{on:false,days:2}},onboarded:false}}
+function fresh(){return{logs:{},settings:{cycle:28,period:5,reminder:{on:false,days:2,hour:9},prefs:JSON.parse(JSON.stringify(DEF_PREFS))},onboarded:false}}
 function valid(o){return o&&typeof o==='object'&&o.logs&&typeof o.logs==='object'&&o.settings&&
   +o.settings.cycle>=MIN_CYCLE&&+o.settings.cycle<=MAX_CYCLE&&+o.settings.period>=1&&+o.settings.period<=15&&
   Object.keys(o.logs).every(function(k){return /^\d{4}-\d{2}-\d{2}$/.test(k)&&o.logs[k]&&typeof o.logs[k]==='object'&&
     (!o.logs[k].flow||FLOWS.hasOwnProperty(o.logs[k].flow))&&(!o.logs[k].symptoms||Array.isArray(o.logs[k].symptoms))})}
-function migrate(o){o.settings.reminder=o.settings.reminder||{on:false,days:2};return o}
+function migrate(o){var r=o.settings.reminder=o.settings.reminder||{on:false,days:2};if(r.hour===undefined)r.hour=9;
+  var p=o.settings.prefs=o.settings.prefs||{};Object.keys(DEF_PREFS).forEach(function(k){if(p[k]===undefined)p[k]=JSON.parse(JSON.stringify(DEF_PREFS[k]))});
+  p.name=String(p.name).slice(0,24);if(!THEMES.hasOwnProperty(p.theme))p.theme='rosa';if(!FONTS.hasOwnProperty(p.font))p.font='suave';
+  if(!Array.isArray(p.customSym))p.customSym=[];if(!Array.isArray(p.hiddenSym))p.hiddenSym=[];p.customSym=p.customSym.map(String);return o}
 function load(){try{var o=JSON.parse(localStorage.getItem(KEY));if(valid(o))return migrate(o)}catch(e){}return mem||fresh()}
 function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('No se pudo guardar. Revisa el espacio de tu teléfono.')}syncReminder()}
 function syncReminder(){
@@ -213,7 +245,7 @@ function syncReminder(){
   if(!S.onboarded||!r.on)return Android.setReminder(0,'');
   var a=analyze(S,t);
   if(!a.last)return Android.setReminder(0,'');
-  Android.setReminder(reminderAt(a,r.days,Date.now()),'Tu periodo podría llegar en '+plural(r.days,'día')+'.');
+  Android.setReminder(reminderAt(a,r.days,Date.now(),r.hour),'Tu periodo podría llegar en '+plural(r.days,'día')+'.');
 }
 
 /* ---- interfaz ---- */
@@ -230,23 +262,26 @@ function render(){
 }
 
 /* Inicio guiado: una pregunta por pantalla */
+function swatches(fn){return '<div class="swatches">'+Object.keys(THEMES).map(function(k){var on=P().theme===k;return '<button class="sw '+(on?'on':'')+'" style="--c:'+THEMES[k].l[6]+'" aria-label="Color '+THEMES[k].n+'" aria-pressed="'+on+'" onclick="'+fn+'(\''+k+'\')"></button>'}).join('')+'</div>'}
 function renderOnboard(){
-  if(!ob)ob={step:0,date:todayS(),period:5,cycle:28};
-  var t=todayS(),dots='<div class="dots" aria-label="Paso '+(ob.step+1)+' de 3">'+[0,1,2].map(function(i){return'<i class="'+(i<=ob.step?'on':'')+'"></i>'}).join('')+'</div>',body;
-  if(ob.step===0)body='<h1>¿Cuándo empezó tu último periodo?</h1><p class="sub">Elige el primer día de sangrado.</p><div style="margin-top:24px"><input type="date" id="o1" aria-label="Fecha de inicio" max="'+t+'" value="'+ob.date+'"></div>';
-  if(ob.step===1)body='<h1>¿Cuántos días suele durar?</h1><p class="sub">Si no lo sabes con certeza, deja 5.</p>'+stepper('period');
-  if(ob.step===2)body='<h1>¿Cada cuántos días suele llegar?</h1><p class="sub">Cuenta desde el inicio de un periodo hasta el siguiente. Si no lo sabes, deja 28.</p>'+stepper('cycle');
+  if(!ob)ob={step:0,date:todayS(),period:5,cycle:28,name:''};
+  var t=todayS(),dots='<div class="dots" aria-label="Paso '+(ob.step+1)+' de 4">'+[0,1,2,3].map(function(i){return'<i class="'+(i<=ob.step?'on':'')+'"></i>'}).join('')+'</div>',body;
+  if(ob.step===0)body='<h1>Te damos la bienvenida</h1><p class="sub">Dale tu toque. Puedes cambiarlo cuando quieras.</p><div class="label">¿Cómo te llamamos? (opcional)</div><input id="o0" maxlength="24" aria-label="Tu nombre" value="'+esc(ob.name)+'" oninput="ob.name=this.value"><div class="label">Elige tu color</div>'+swatches('obTheme');
+  if(ob.step===1)body='<h1>¿Cuándo empezó tu último periodo?</h1><p class="sub">Elige el primer día de sangrado.</p><div style="margin-top:24px"><input type="date" id="o1" aria-label="Fecha de inicio" max="'+t+'" value="'+ob.date+'"></div>';
+  if(ob.step===2)body='<h1>¿Cuántos días suele durar?</h1><p class="sub">Si no lo sabes con certeza, deja 5.</p>'+stepper('period');
+  if(ob.step===3)body='<h1>¿Cada cuántos días suele llegar?</h1><p class="sub">Cuenta desde el inicio de un periodo hasta el siguiente. Si no lo sabes, deja 28.</p>'+stepper('cycle');
   $('app').innerHTML='<div class="step">'+dots+body+'<div class="grow"></div>'+
-    (ob.step===2?'<p class="note">Tus datos se guardan solo en este teléfono. La app no tiene permiso para usar internet.</p>':'')+
-    '<button class="btn" onclick="obNext()">'+(ob.step===2?'Empezar':'Continuar')+'</button>'+
+    (ob.step===3?'<p class="note">Tus datos se guardan solo en este teléfono. La app no tiene permiso para usar internet.</p>':'')+
+    '<button class="btn" onclick="obNext()">'+(ob.step===3?'Empezar':'Continuar')+'</button>'+
     (ob.step?'<button class="btn alt" onclick="ob.step--;render()">Atrás</button>':'')+'</div>';
 }
+function obTheme(k){P().theme=k;applyTheme();render()}
 function stepper(k){return '<div class="stepper"><button aria-label="Menos" onclick="obAdj(\''+k+'\',-1)">−</button><output id="ov">'+ob[k]+'</output><button aria-label="Más" onclick="obAdj(\''+k+'\',1)">+</button></div>'}
 function obAdj(k,x){var lim=k==='period'?[1,15]:[MIN_CYCLE,MAX_CYCLE];ob[k]=Math.min(lim[1],Math.max(lim[0],ob[k]+x));$('ov').textContent=ob[k]}
 function obNext(){
-  if(ob.step===0){var d=$('o1').value;if(!d||d>todayS())return toast('Elige una fecha de hoy o anterior.');ob.date=d}
-  if(ob.step<2){ob.step++;return render()}
-  S.settings.cycle=ob.cycle;S.settings.period=ob.period;S.onboarded=true;fillPeriod(ob.date,ob.period);ob=null;save();render();
+  if(ob.step===1){var d=$('o1').value;if(!d||d>todayS())return toast('Elige una fecha de hoy o anterior.');ob.date=d}
+  if(ob.step<3){ob.step++;return render()}
+  P().name=ob.name.trim();S.settings.cycle=ob.cycle;S.settings.period=ob.period;S.onboarded=true;fillPeriod(ob.date,ob.period);ob=null;save();render();
 }
 function fillPeriod(from,len){
   var n=toN(from),t=toN(todayS());
@@ -255,6 +290,7 @@ function fillPeriod(from,len){
 
 /* Hoy */
 function ringSvg(a,t){
+  if(a.last&&P().shape==='flor')return flowerSvg(a,t);
   var R=128,C=150,out='<svg viewBox="0 0 300 300" role="img" aria-label="Día '+(a.last?a.cycleDay:0)+' del ciclo">';
   if(!a.last)return out+'<circle cx="150" cy="150" r="128" fill="none" stroke="var(--sunk)" stroke-width="16"/></svg>';
   var L=Math.max(a.cycleLen,a.cycleDay),gap=Math.min(3,60/L),i,mark='';
@@ -266,8 +302,18 @@ function ringSvg(a,t){
   }
   return out+mark+'</svg>';
 }
+function flowerSvg(a,t){
+  var L=Math.max(a.cycleLen,a.cycleDay),w=Math.min(26,804/L*.66),out='<svg viewBox="0 0 300 300" role="img" aria-label="Día '+a.cycleDay+' del ciclo">',top='';
+  for(var i=1;i<=L;i++){
+    var ph=PHASES[dayPhase(i,a,S.logs,t)],now=i===a.cycleDay,y=now?2:7,b=y+(now?46:38),ang=((i-.5)*360/L).toFixed(2);
+    var d='M150 '+y+'C'+(150-w)+' '+(y+12)+' '+(150-w)+' '+(b-12)+' 150 '+b+'C'+(150+w)+' '+(b-12)+' '+(150+w)+' '+(y+12)+' 150 '+y+'Z';
+    var el='<path class="seg" style="--i:'+i+'" transform="rotate('+ang+' 150 150)" d="'+d+'" fill="var('+ph.c+')" opacity="'+(i<=a.cycleDay?1:.3)+'"'+(now?' stroke="var(--ink)" stroke-width="2.5"':'')+'/>';
+    if(now)top=el;else out+=el;
+  }
+  return out+top+'</svg>';
+}
 function renderHoy(){
-  var t=toN(todayS()),d=new Date(t*DAY),a=analyze(S,t),todayLog=S.logs[toS(t)],h='<div class="hero"><p class="date">'+WEEK[d.getUTCDay()].replace(/^./,function(c){return c.toUpperCase()})+' '+nice(t)+'</p>';
+  var t=toN(todayS()),d=new Date(t*DAY),a=analyze(S,t),todayLog=S.logs[toS(t)],h='<div class="hero">'+(P().name?'<h1 class="hello">Hola, '+esc(P().name)+'</h1>':'')+'<p class="date">'+WEEK[d.getUTCDay()].replace(/^./,function(c){return c.toUpperCase()})+' '+nice(t)+'</p>';
   var intro=firstHome;firstHome=false;
   if(!a.last){
     h+='<div class="ringbox">'+ringSvg(a,t)+'<div class="center"><div class="cap">Sin registros</div></div></div><h2 class="head">Registra tu periodo</h2><p class="sub">Con ese dato calculamos tus próximas fechas.</p></div>';
@@ -286,8 +332,7 @@ function renderHoy(){
   h+='<button class="btn alt"'+(todayLog&&todayLog.flow?' style="margin-top:16px"':'')+' onclick="openDay(\''+toS(t)+'\')">Registrar síntomas y notas</button>';
   if(a.last){var f=a.next.fertEnd<t?a.forecast[1]:a.next;
     h+='<h2 class="sec">Próximas fechas</h2><div class="group"><div class="row"><span>Periodo</span><b>'+nice(a.next.start)+'</b></div>'+
-       '<div class="row"><span>Días fértiles</span><b>'+range(f.fertStart,f.fertEnd)+'</b></div>'+
-       '<div class="row"><span>Ovulación</span><b>'+nice(f.ovu)+'</b></div></div>'+
+       (P().showFertile!==false?'<div class="row"><span>Días fértiles</span><b>'+range(f.fertStart,f.fertEnd)+'</b></div><div class="row"><span>Ovulación</span><b>'+nice(f.ovu)+'</b></div>':'')+'</div>'+
        '<p class="note">Son estimaciones. No uses esta app como método anticonceptivo.</p>'}
   $('app').innerHTML=h;
 }
@@ -298,15 +343,15 @@ function renderCal(){
   var ts=todayS(),t=toN(ts),cy=+ts.slice(0,4),cm=+ts.slice(5,7)-1;
   if(!view)view={y:cy,m:cm};
   var a=analyze(S,t),first=new Date(Date.UTC(view.y,view.m,1)),n0=first.getTime()/DAY,
-      offset=(first.getUTCDay()+6)%7,count=new Date(Date.UTC(view.y,view.m+1,0)).getUTCDate(),h='';
+      offset=(first.getUTCDay()+(P().week==='dom'?0:6))%7,count=new Date(Date.UTC(view.y,view.m+1,0)).getUTCDate(),h='';
   h+='<div class="cal-h"><button class="nav" aria-label="Mes anterior" onclick="shift(-1)">'+CHEV(-1)+'</button><h2>'+MONTHS[view.m].replace(/^./,function(c){return c.toUpperCase()})+' '+view.y+'</h2><button class="nav" aria-label="Mes siguiente" onclick="shift(1)">'+CHEV(1)+'</button></div>';
   if(view.y!==cy||view.m!==cm)h+='<button class="jump" onclick="view=null;render()">Volver a hoy</button>';
   h+='<div class="grid" id="grid">';
-  ['L','M','X','J','V','S','D'].forEach(function(d){h+='<div class="dow">'+d+'</div>'});
+  (P().week==='dom'?['D','L','M','X','J','V','S']:['L','M','X','J','V','S','D']).forEach(function(d){h+='<div class="dow">'+d+'</div>'});
   for(var i=0;i<offset;i++)h+='<div class="d out"></div>';
   for(var d=0;d<count;d++){var n=n0+d,c=classify(n,a,S.logs,t),k=Object.keys(c).join(' ');
     h+='<button class="d '+k+(n===t?' today':'')+'" aria-label="'+nice(n)+'" onclick="openDay(\''+toS(n)+'\')"><span>'+(d+1)+'</span></button>'}
-  h+='</div><div class="legend"><span><i style="background:var(--men)"></i>Periodo</span><span><i style="border:2px dashed var(--men)"></i>Previsto</span><span><i style="background:var(--fer-t)"></i>Fértil</span><span><i style="background:var(--fer)"></i>Ovulación</span></div>';
+  h+='</div><div class="legend"><span><i style="background:var(--men)"></i>Periodo</span><span><i style="border:2px dashed var(--men)"></i>Previsto</span>'+(P().showFertile!==false?'<span><i style="background:var(--fer-t)"></i>Fértil</span><span><i style="background:var(--fer)"></i>Ovulación</span>':'')+'</div>';
   h+='<p class="note">Toca un día para registrar o corregir. Desliza para cambiar de mes.</p>';
   $('app').innerHTML=h;
   var g=$('grid'),sx=null;
@@ -329,7 +374,7 @@ function openDay(k){
   h+='</div>';
   if(l.flow&&n<t)h+='<button class="btn alt" onclick="fillFrom(\''+k+'\')">Marcar '+plural(a.periodLen,'día')+' desde esta fecha</button>';
   h+='<div class="label">Síntomas</div><div class="chips">';
-  SYMPTOMS.forEach(function(s,i){var on=(l.symptoms||[]).indexOf(s)>=0;h+='<button class="chip '+(on?'on':'')+'" aria-pressed="'+on+'" onclick="togSym(\''+k+'\','+i+')">'+s+'</button>'});
+  symptomList().forEach(function(s,i){var on=(l.symptoms||[]).indexOf(s)>=0;h+='<button class="chip '+(on?'on':'')+'" aria-pressed="'+on+'" onclick="togSym(\''+k+'\','+i+')">'+esc(s)+'</button>'});
   h+='</div><div class="label">Notas</div><textarea id="note" aria-label="Notas" onchange="setNote(\''+k+'\',this.value)">'+esc(l.note||'')+'</textarea>'+
      '<button class="btn" onclick="setNote(\''+k+'\',$(\'note\').value);closeSheet()">Guardar</button></div></div>';
   $('modal').innerHTML=h;sheetOpen=true;
@@ -339,7 +384,7 @@ function clean(k){var l=S.logs[k];if(l&&!l.flow&&!(l.symptoms&&l.symptoms.length
 function keepNote(k){var e=$('note');if(e){S.logs[k]=S.logs[k]||{};S.logs[k].note=e.value}}
 function setFlow(k,f){keepNote(k);S.logs[k]=S.logs[k]||{};if(f)S.logs[k].flow=f;else delete S.logs[k].flow;clean(k);save();openDay(k);render()}
 function fillFrom(k){fillPeriod(k,analyze(S,toN(todayS())).periodLen);save();closeSheet();toast('Periodo marcado')}
-function togSym(k,i){keepNote(k);var l=S.logs[k]=S.logs[k]||{},a=l.symptoms=l.symptoms||[],s=SYMPTOMS[i],p=a.indexOf(s);if(p>=0)a.splice(p,1);else a.push(s);clean(k);save();openDay(k);render()}
+function togSym(k,i){keepNote(k);var l=S.logs[k]=S.logs[k]||{},a=l.symptoms=l.symptoms||[],s=symptomList()[i],p=a.indexOf(s);if(p>=0)a.splice(p,1);else a.push(s);clean(k);save();openDay(k);render()}
 function setNote(k,v){S.logs[k]=S.logs[k]||{};S.logs[k].note=v.trim();clean(k);save()}
 function closeSheet(){$('modal').innerHTML='';sheetOpen=false;render()}
 
@@ -375,9 +420,20 @@ function renderStats(){
 /* Ajustes */
 function renderAjustes(){
   var r=S.settings.reminder,denied=r.on&&window.Android&&Android.notificationsAllowed&&!Android.notificationsAllowed();
-  var h='<h1 class="title">Ajustes</h1><div class="group"><div class="row"><span style="color:var(--ink)">Recordatorio de periodo</span><button class="switch" role="switch" aria-label="Recordatorio de periodo" aria-checked="'+r.on+'" onclick="togReminder()"></button></div>';
+  var chips=function(key,opts){return '<div class="chips">'+opts.map(function(o){var on=P()[key]===o[0];return '<button class="chip '+(on?'on':'')+'" aria-pressed="'+on+'" onclick="setPref(\''+key+'\',\''+o[0]+'\')">'+o[1]+'</button>'}).join('')+'</div>'};
+  var h='<h1 class="title">Ajustes</h1><h2 class="sec" style="margin-top:0">Personalizar</h2><div class="group">'+
+  '<label class="field"><div>Tu nombre</div><input id="pname" maxlength="24" value="'+esc(P().name)+'" onchange="setName(this.value)"></label>'+
+  '<div class="field"><div>Color</div>'+swatches('setTheme')+'</div>'+
+  '<div class="field"><div>Apariencia</div>'+chips('mode',[['auto','Automática'],['light','Clara'],['dark','Oscura']])+'</div>'+
+  '<div class="field"><div>Forma del ciclo</div>'+chips('shape',[['flor','Flor'],['anillo','Anillo']])+'</div>'+
+  '<div class="field"><div>Letra de los títulos</div>'+chips('font',Object.keys(FONTS).map(function(k){return[k,FONTS[k][0]]}))+'</div>'+
+  '<div class="field"><div>La semana empieza en</div>'+chips('week',[['lun','Lunes'],['dom','Domingo']])+'</div>'+
+  '<div class="row"><span style="color:var(--ink)">Mostrar días fértiles</span><button class="switch" role="switch" aria-label="Mostrar días fértiles" aria-checked="'+(P().showFertile!==false)+'" onclick="togFertile()"></button></div>'+
+  '<button class="link" onclick="symSheet()"><span>Mis síntomas<small>Agrega los tuyos u oculta los que no uses</small></span></button></div>'+
+  '<h2 class="sec">Recordatorios</h2><div class="group"><div class="row"><span style="color:var(--ink)">Recordatorio de periodo</span><button class="switch" role="switch" aria-label="Recordatorio de periodo" aria-checked="'+r.on+'" onclick="togReminder()"></button></div>';
   if(r.on){h+='<div class="row" style="display:block"><div style="color:var(--soft);margin-bottom:8px">Avisarme antes</div><div class="chips">';
-    [1,2,3,5].forEach(function(d){h+='<button class="chip '+(r.days===d?'on':'')+'" aria-pressed="'+(r.days===d)+'" onclick="setRemDays('+d+')">'+plural(d,'día')+'</button>'});h+='</div></div>'}
+    [1,2,3,5].forEach(function(d){h+='<button class="chip '+(r.days===d?'on':'')+'" aria-pressed="'+(r.days===d)+'" onclick="setRemDays('+d+')">'+plural(d,'día')+'</button>'});h+='</div></div><div class="row" style="display:block"><div style="color:var(--soft);margin-bottom:8px">Hora del aviso</div><div class="chips">';
+    [8,9,12,18,21].forEach(function(x){h+='<button class="chip '+(r.hour===x?'on':'')+'" aria-pressed="'+(r.hour===x)+'" onclick="setRemHour('+x+')">'+x+':00</button>'});h+='</div></div>'}
   h+='</div>';
   if(denied)h+='<p class="note">Las notificaciones están desactivadas. Actívalas para Mi Ciclo en los ajustes de tu teléfono.</p>';
   h+='<h2 class="sec">Privacidad</h2><div class="group"><div class="row"><span style="color:var(--ink)">Bloquear con PIN</span><button class="switch" role="switch" aria-label="Bloquear con PIN" aria-checked="'+!!S.pin+'" onclick="togPin()"></button></div></div>'+
@@ -391,6 +447,22 @@ function renderAjustes(){
   '<p class="note" style="text-align:center;margin-top:20px">Mi Ciclo '+VERSION+'. No sustituye la atención médica ni es un método anticonceptivo.</p>';
   $('app').innerHTML=h;
 }
+function setPref(k,v){P()[k]=v;save();applyTheme();render()}
+function setTheme(k){setPref('theme',k)}
+function setName(v){P().name=v.trim().slice(0,24);save();toast('Nombre guardado')}
+function togFertile(){P().showFertile=P().showFertile===false;save();render()}
+function setRemHour(x){S.settings.reminder.hour=x;save();render()}
+function symSheet(){
+  var h='<h3>Mis síntomas</h3><p class="note">Toca uno para mostrarlo u ocultarlo al registrar tu día.</p><div class="chips">';
+  SYMPTOMS.forEach(function(s,i){var on=P().hiddenSym.indexOf(s)<0;h+='<button class="chip '+(on?'on':'')+'" aria-pressed="'+on+'" onclick="togDefSym('+i+')">'+esc(s)+'</button>'});
+  h+='</div>';
+  if(P().customSym.length){h+='<div class="label">Agregados por ti</div><div class="chips">';P().customSym.forEach(function(s,i){h+='<button class="chip on" aria-label="Quitar '+esc(s)+'" onclick="delSym('+i+')">'+esc(s)+' ×</button>'});h+='</div>'}
+  h+='<div class="symrow"><input id="newsym" maxlength="28" placeholder="Nuevo síntoma" aria-label="Nuevo síntoma"><button class="btn" onclick="addSym()">Agregar</button></div><button class="btn alt" onclick="closeSheet()">Listo</button>';
+  sheet(h);
+}
+function togDefSym(i){var a=P().hiddenSym,s=SYMPTOMS[i],p=a.indexOf(s);if(p>=0)a.splice(p,1);else a.push(s);save();symSheet()}
+function delSym(i){P().customSym.splice(i,1);save();symSheet()}
+function addSym(){var v=$('newsym').value.trim();if(!v)return toast('Escribe el nombre del síntoma.');if(symptomList().concat(SYMPTOMS).indexOf(v)>=0)return toast('Ese síntoma ya existe.');P().customSym.push(v);save();symSheet()}
 function togReminder(){var r=S.settings.reminder;r.on=!r.on;if(r.on&&window.Android&&Android.requestNotifications)Android.requestNotifications();save();render();if(r.on)toast('Recordatorio activado')}
 function setRemDays(d){S.settings.reminder.days=d;save();render()}
 function saveSettings(){var p=+$('s2').value,c=+$('s1').value;
@@ -399,11 +471,11 @@ function saveSettings(){var p=+$('s2').value,c=+$('s1').value;
 function exportData(){var o=JSON.parse(JSON.stringify(S));delete o.pin;var txt=JSON.stringify(o);
   if(window.Android&&Android.share){Android.share(txt);return}
   if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){toast('Datos copiados')},function(){toast('No se pudieron copiar los datos.')})}}
-function sheet(inner){$('modal').innerHTML='<div class="scrim" onclick="if(event.target===this)closeSheet()"><div class="sheet"><div class="grab"></div>'+inner+'</div></div>';sheetOpen=true}
+function sheet(inner){$('modal').innerHTML='<div class="scrim'+(sheetOpen?' noanim':'')+'" onclick="if(event.target===this)closeSheet()"><div class="sheet"><div class="grab"></div>'+inner+'</div></div>';sheetOpen=true}
 function importSheet(){sheet('<h3>Importar datos</h3><p class="note">Pega el texto que exportaste. Reemplazará los datos actuales.</p><textarea id="imp" aria-label="Datos exportados"></textarea><button class="btn" onclick="doImport()">Importar datos</button><button class="btn alt" onclick="closeSheet()">Cancelar</button>')}
-function doImport(){try{var o=JSON.parse($('imp').value);if(!valid(o))throw 0;migrate(o);o.onboarded=true;if(S.pin)o.pin=S.pin;S=o;save();closeSheet();toast('Datos importados')}catch(e){toast('Ese texto no es una copia de Mi Ciclo.')}}
+function doImport(){try{var o=JSON.parse($('imp').value);if(!valid(o))throw 0;migrate(o);o.onboarded=true;if(S.pin)o.pin=S.pin;S=o;save();applyTheme();closeSheet();toast('Datos importados')}catch(e){toast('Ese texto no es una copia de Mi Ciclo.')}}
 function wipeSheet(){sheet('<h3>¿Borrar todos tus datos?</h3><p style="margin-top:8px">Se eliminarán tus registros de este teléfono. No se puede deshacer.</p><button class="btn danger" onclick="doWipe()">Borrar todos mis datos</button><button class="btn alt" onclick="closeSheet()">Cancelar</button>')}
-function doWipe(){S=fresh();tab='hoy';view=null;ob=null;firstHome=true;save();closeLock();closeSheet()}
+function doWipe(){S=fresh();tab='hoy';view=null;ob=null;firstHome=true;save();applyTheme();closeLock();closeSheet()}
 
 /* PIN: evita que otras personas abran la app en tu teléfono */
 var pin=null,pausedAt=0;
@@ -431,7 +503,9 @@ function forgot(){$('lock').innerHTML='<div class="lock"><h2>¿Borrar datos para
 window.onBack=function(){if(pin)return false;if(sheetOpen){closeSheet();return true}if(S.onboarded&&tab!=='hoy'){setTab('hoy');return true}return false};
 window.onAppPause=function(){pausedAt=Date.now()};
 window.onAppResume=function(){if(S.pin&&!pin&&pausedAt&&Date.now()-pausedAt>30000)lockNow();pausedAt=0;if(tab==='ajustes'&&!pin&&!sheetOpen)render()};
-window.MC={periods:periods,analyze:analyze,classify:classify,dayPhase:dayPhase,reminderAt:reminderAt,toN:toN,toS:toS,valid:valid,hash:hash};
+window.MC={applyTheme:applyTheme,periods:periods,analyze:analyze,classify:classify,dayPhase:dayPhase,reminderAt:reminderAt,toN:toN,toS:toS,valid:valid,hash:hash};
+S=migrate(S);applyTheme();
+if(window.matchMedia)matchMedia('(prefers-color-scheme:dark)').addEventListener('change',applyTheme);
 render();syncReminder();if(S.pin)lockNow();
 </script>
 </body>

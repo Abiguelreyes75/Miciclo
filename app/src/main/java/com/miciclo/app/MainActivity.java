@@ -4,8 +4,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
@@ -33,6 +36,26 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void setBars(final String top, final String bottom, final boolean light) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Window w = getWindow();
+                    w.setStatusBarColor(parse(top));
+                    w.setNavigationBarColor(parse(bottom));
+                    int flags = 0;
+                    if (light) {
+                        flags = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                        if (Build.VERSION.SDK_INT >= 26) {
+                            flags |= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+                        }
+                    }
+                    w.getDecorView().setSystemUiVisibility(flags);
+                }
+            });
+        }
+
+        @JavascriptInterface
         public void setReminder(double atMillis, String text) {
             Reminders.save(MainActivity.this, (long) atMillis, text);
         }
@@ -48,6 +71,14 @@ public class MainActivity extends Activity {
                 requestPermissions(new String[] {Manifest.permission.POST_NOTIFICATIONS}, 1);
             }
         }
+    }
+
+    /** Acepta #abc y #aabbcc, que son los formatos de los temas. */
+    private static int parse(String c) {
+        if (c.length() == 4) {
+            c = "#" + c.charAt(1) + c.charAt(1) + c.charAt(2) + c.charAt(2) + c.charAt(3) + c.charAt(3);
+        }
+        return Color.parseColor(c);
     }
 
     @Override
